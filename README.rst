@@ -1,9 +1,9 @@
 About
 =====
 
-Django-Livesettings is a project split from the `Satchmo Project`_.  It provides the ability to configure settings via an admin interface, rather than by editing :file:`settings.py`. In addition, livesettings allows you to set sane defaults so that your site can be perfectly functional without any changes. Livesettings uses caching to make sure this has minimal impact on your site's performance.
+Django-Livesettings is a project split from the `Satchmo Project`_.  It provides the ability to configure settings via an admin interface, rather than by editing 'settings.py'. In addition, livesettings allows you to set sane defaults so that your site can be perfectly functional without any changes. Livesettings uses caching to make sure this has minimal impact on your site's performance.
 
-Finally, if you wish to lock down your site and disable the settings, you can export your livesettings and store them in your :file:`settings.py`. This allows you have flexibility in deciding how various users interact with your app.
+Finally, if you wish to lock down your site and disable the settings, you can export your livesettings and store them in your 'settings.py'. This allows you have flexibility in deciding how various users interact with your app.
 
 Livesettings supports several types of input choices:
 
@@ -65,7 +65,7 @@ After the dependencies have been installed, you can install the latest livesetti
 
     pip install -e hg+http://bitbucket.org/bkroeze/django-livesettings/#egg=django-livesettings
 
-Add livesettings to your installed apps in :file:`settings.py`::
+Add livesettings to your installed apps in 'settings.py':
 
     INSTALLED_APPS = (
         ...
@@ -82,7 +82,7 @@ values with the default `LocMemCache`. The default configuration is safe for
 a debug server (manage.py runserver).
 
 
-Add it to your :file:`urls.py`::
+Add it to your 'urls.py':
 
     urlpatterns = patterns('',
         ...
@@ -105,17 +105,17 @@ Execute a syncdb to create the required tables::
 Usage
 =====
 
-An example project is in the directory :file:`test-project`.
+An example project is in the directory 'test-project'.
 It's beginning isidentical to the following description and is a useful example for integrating livesettings into your app.
 
 Creating Config.py
 ------------------
 
-In order to use livesettings, you will need to create a :file:`config.py` in your django application.
-For this example, we will create a :file:`config.py` file in the 'test-project/localsite' directory.
+In order to use livesettings, you will need to create a 'config.py' in your django application.
+For this example, we will create a 'config.py' file in the 'test-project/localsite' directory.
 
 Example: "For this specific app, we want to allow an admin user to control how many images are displayed on the front page of our site."
-We will create the following :file:`config.py`::
+We will create the following 'config.py':
 
     from livesettings import config_register, ConfigurationGroup, PositiveIntegerValue, MultipleStringValue
     from django.utils.translation import ugettext_lazy as _
@@ -148,7 +148,7 @@ We will create the following :file:`config.py`::
             default="imperial"
         ))
 
-In order to activate this file, add the following line to your :file:`models.py`::
+In order to activate this file, add the following line to your 'models.py':
 
     import config
 
@@ -162,7 +162,7 @@ we want to do experiments with configuration group `MyApp` only:
 where `MyApp` is the key name of the displayed group.
 
 More examples for all implemented types of ..Values can be found in
-:file:`test-project/localsite/config.py`::
+'test-project/localsite/config.py':
 including configuration groups which are enabled or disabled based on modules selected in the form.
 You can review examples by:
 
@@ -176,7 +176,7 @@ Accessing your value in a view
 
 Now that you have been able to set a value and allow a user to change it, the next step is to access it from a view.
 
-In a :file:`views.py`, you can use the config_value function to get access to the value. Here is a very simple view that passes the value to your template::
+In a 'views.py', you can use the config_value function to get access to the value. Here is a very simple view that passes the value to your template::
 
 
     from django.shortcuts import render_to_response
@@ -191,7 +191,7 @@ In a :file:`views.py`, you can use the config_value function to get access to th
                                 {'image_count': image_count,
                                 'measurement_system': measurement_system[0]})
 
-Using the value in your :file:`index.html` is straightforward::
+Using the value in your 'index.html' is straightforward::
 
     <p>Test page</p>
     <p>You want to show {{image_count}} pictures and use the {{measurement_system}} system.</p>
@@ -227,7 +227,7 @@ Exporting Settings
 ------------------
 
 Settings can be exported by the `http://127.0.0.1:8000/settings/export/ <http://127.0.0.1:8000/settings/export/>`_ . After exporting the file, the entire
-output can be manually copied and pasted to :file:`settings.py` in order to deploy configuration to more sites
+output can be manually copied and pasted to 'settings.py' in order to deploy configuration to more sites
 or to entirely prevent further changes and reading by web browser.
 If you restrict DB access to the settings, all of the livesettings_* tables will be unused.
 
