@@ -63,7 +63,7 @@ Installing Livesettings
 
 After the dependencies have been installed, you can install the latest livesettings, using::
 
-    pip install -e hg+http://bitbucket.org/bkroeze/django-livesettings/#egg=django-livesettings
+    pip install djangoplicity-livesettings
 
 Add livesettings to your installed apps in 'settings.py':
 
