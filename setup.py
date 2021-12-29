@@ -17,7 +17,7 @@ setup(
     long_description = """Django-Livesettings is a project split from the Satchmo Project. It provides the ability to configure settings via an admin interface, rather than by editing "settings.py".""",
     author = 'Bruce Kroeze',
     author_email = 'bruce@ecomsmith.com',
-    url = 'http://bitbucket.org/bkroeze/django-livesettings/',
+    url = 'https://github.com/djangoplicity/djangoplicity-livesettings.git',
     download_url = 'https://github.com/djangoplicity/djangoplicity-livesettings/archive/refs/tags/1.4.17.tar.gz',
     license = 'New BSD License',
     platforms = ['any'],
