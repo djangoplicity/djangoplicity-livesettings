@@ -1,4 +1,4 @@
-Django Livesettings
+Djangoplicity Livesettings
 ===================
 
 Contents:
