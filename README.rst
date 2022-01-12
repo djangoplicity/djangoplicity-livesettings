@@ -24,25 +24,6 @@ Livesettings has been used for many years in the satchmo project and is consider
 
 .. _`Satchmo Project`: http://www.satchmoproject.com
 
-Django Livesettings
-===================
-
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-
-   about
-   installation
-   usage
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
 Installation
 ============
@@ -74,6 +55,7 @@ Add livesettings to your installed apps in 'settings.py':
         'livesettings',
         'myapp'
         ...
+
     )
 
 It is high recommended to configure a global cache (like `MemcachedCache`) for
@@ -90,6 +72,7 @@ Add it to your 'urls.py':
         url(r'^admin/', include(admin.site.urls)),
         url(r'^settings/', include('livesettings.urls')),
         ...
+
     )
 
 Execute a syncdb to create the required tables::
@@ -122,31 +105,31 @@ We will create the following 'config.py':
 
     # First, setup a grup to hold all our possible configs
     MYAPP_GROUP = ConfigurationGroup(
-        'MyApp',               # key: internal name of the group to be created
-        _('My App Settings'),  # name: verbose name which can be automatically translated
-        ordering=0             # ordering: order of group in the list (default is 1)
-        )
+    'MyApp',               # key: internal name of the group to be created
+    _('My App Settings'),  # name: verbose name which can be automatically translated
+    ordering=0             # ordering: order of group in the list (default is 1)
+    )
 
     # Now, add our number of images to display value
     # If a user doesn't enter a value, default to 5
     config_register(PositiveIntegerValue(
-        MYAPP_GROUP,           # group: object of ConfigurationGroup created above
-            'NUM_IMAGES',      # key:   internal name of the configuration value to be created
-            description = _('Number of images to display'),              # label for the value
-            help_text = _("How many images to display on front page."),  # help text
-            default = 5        # value used if it have not been modified by the user interface
-        ))
+    MYAPP_GROUP,           # group: object of ConfigurationGroup created above
+    'NUM_IMAGES',      # key:   internal name of the configuration value to be created
+    description = _('Number of images to display'),              # label for the value
+    help_text = _("How many images to display on front page."),  # help text
+    default = 5        # value used if it have not been modified by the user interface
+    ))
 
     # Another example of allowing the user to select from several values
     config_register(MultipleStringValue(
-            MYAPP_GROUP,
-            'MEASUREMENT_SYSTEM',
-            description=_("Measurement System"),
-            help_text=_("Default measurement system to use."),
-            choices=[('metric',_('Metric')),
-                        ('imperial',_('Imperial'))],
-            default="imperial"
-        ))
+    MYAPP_GROUP,
+    'MEASUREMENT_SYSTEM',
+    description=_("Measurement System"),
+    help_text=_("Default measurement system to use."),
+    choices=[('metric',_('Metric')),
+    ('imperial',_('Imperial'))],
+    default="imperial"
+    ))
 
 In order to activate this file, add the following line to your 'models.py':
 
